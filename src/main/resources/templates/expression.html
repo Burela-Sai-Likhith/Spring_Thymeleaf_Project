@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expression</title>
+</head>
+<body>
+<h1>Expression</h1>
+<h2>Variable Expression</h2>
+<p th:text="${person.id}">ID: 2</p>
+<p th:text="${person.name}">Name: Vijay</p>
+<p>Address</p>
+<p th:text="${person.address.street}">Street: PM Palem</p>
+<p th:text="${person.address.zipcode}">Zipcode: 530045</p>
+
+<h2>Selection Variable Expression</h2>
+<div th:object="${person}">
+    <p th:text="*{id}">ID: 2</p>
+    <p th:text="*{name}">Name: Vijay</p>
+    <p>Address</p>
+    <p th:text="*{address.street}">Street: PM Palem</p>
+    <p th:text="*{address.zipcode}">Zipcode: 530045</p>
+</div>
+
+<h2>Message Variable</h2>
+<p th:text="#{person.name}">Default Person Name</p>
+<p th:text="#{project.name}">Default Project Name</p>
+
+<h2>Link URL</h2>
+<p><a href="#" th:href="@{/user/1}">URL 1</a></p>
+<p><a href="#" th:href="@{/user(id=${person.id}, name=${person.name})}">Query String URL</a></p>
+<p><a href="#" th:href="@{/user/{uid}/name/{uname}(uid=${person.id}, uname=${person.name})}">Path Variable URL</a></p>
+
+</body>
+</html>
